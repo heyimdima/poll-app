@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Observable} from "rxjs";
-import {Option} from "../../../../../poll-app-v2/src/app/model/option";
-import {PollService} from "../../../../../poll-app-v2/src/app/poll.service";
+import {Option} from "src/app/model/option"
+import {PollService} from "src/app/poll.service";
 
 @Component({
   selector: 'app-poll-form',
