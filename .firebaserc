@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "poll-app-v2": {
+      "hosting": {
+        "poll-app-v3": [
+          "poll-app-v2"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "poll-app-v2"
+  }
+}

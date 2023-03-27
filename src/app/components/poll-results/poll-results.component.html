@@ -1,0 +1,15 @@
+<mat-card class="poll-form-card">
+  <mat-card-header class="poll-form-title">What is your favorite food?</mat-card-header>
+  <mat-divider></mat-divider>
+  <mat-card-content>
+    <mat-radio-group class="poll-form-radio-group" [(ngModel)]="selectedOption" *ngFor="let option of options">
+      <mat-radio-button disabled class="poll-form-radio-button">
+        {{option.content}}
+      </mat-radio-button>
+      <mat-progress-bar mode="determinate" [value]="option.percentage"></mat-progress-bar>
+    </mat-radio-group>
+    <div>Thank you!!</div>
+  </mat-card-content>
+</mat-card>
+
+<div>Your favorite food is: {{selectedOption}}</div>
