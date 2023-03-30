@@ -4,7 +4,7 @@
   <mat-card-content>
     <mat-radio-group class="poll-form-radio-group" [(ngModel)]="selectedOption">
       <mat-radio-button class="poll-form-radio-button" *ngFor="let poll of polls | async" [value]="poll.options[0]">
-        {{poll.options}}
+        {{poll.options[0]}}
       </mat-radio-button>
     </mat-radio-group>
     <div class="button-row">
