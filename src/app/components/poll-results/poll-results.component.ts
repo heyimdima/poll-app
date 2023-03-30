@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {Option} from "../../../../../poll-app-v2/src/app/model/option";
+import {Option} from "../../../../../poll-app-v2/src/app/models/option";
 import {PollService} from "../../../../../poll-app-v2/src/app/poll.service";
 
 @Component({
