@@ -3,16 +3,16 @@
   <mat-divider class="divider"></mat-divider>
   <mat-card-content>
     <mat-radio-group class="poll-form-radio-group" [(ngModel)]="selectedOption">
-      <mat-radio-button class="poll-form-radio-button" *ngFor="let option of options | async" [value]="option">
-        {{option.value}}
+      <mat-radio-button class="poll-form-radio-button" *ngFor="let poll of polls | async" [value]="poll.options[0]">
+        {{poll.options}}
       </mat-radio-button>
     </mat-radio-group>
     <div class="button-row">
-      <button mat-raised-button [disabled]="selectedOption.value == 'Not Selected'" class="poll-form-button-answer">Answer</button>
+      <button mat-raised-button [disabled]="selectedOption.text == 'not selected'" class="poll-form-button-answer">Answer</button>
       <button mat-raised-button (click)="test()" class="poll-form-button-see-results">See results</button>
     </div>
 
   </mat-card-content>
 </mat-card>
 
-<div>Your favorite food is: {{selectedOption.value}}</div>
+<div>Your favorite food is: {{selectedOption.text}}</div>
