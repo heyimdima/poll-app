@@ -30,5 +30,4 @@ export class PollFormComponent implements OnInit{
     console.log(this.polls);
   }
 
-
 }
