@@ -22,12 +22,10 @@ export class PollFormComponent implements OnInit{
 
   constructor(private pollService: PollService) {
     this.selectedOption = {id: "no id",text: "not selected", voteCount: 0};
-
   }
 
   ngOnInit() {
     this.polls = this.pollService.getPolls();
-    console.log(this.polls);
   }
 
 }
