@@ -4,6 +4,7 @@ import {AngularFirestore} from "@angular/fire/compat/firestore";
 import {Poll} from "../models/poll";
 import {PollOption} from "../models/poll-option";
 import {Vote} from "../models/vote";
+import { map, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +23,9 @@ export class PollService {
   }
 
   getPolls() {
-    return this.firestore.collection<Poll>('polls').valueChanges();
+    return this.firestore.collection<Poll>('polls').valueChanges().pipe(map((polls: Poll[]) => {
+      return polls?.[0];
+    }));
   }
 
   getPoll(id: string) {
