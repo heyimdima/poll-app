@@ -3,8 +3,8 @@
   <mat-divider class="divider"></mat-divider>
   <mat-card-content>
     <mat-radio-group class="poll-form-radio-group" [(ngModel)]="selectedOption">
-      <mat-radio-button class="poll-form-radio-button" *ngFor="let opt of pollOptions$ | async" [value]="opt.id">
-        {{opt.text}}
+      <mat-radio-button class="poll-form-radio-button" *ngFor="let option of pollOptions$ | async" [value]="option">
+        {{option.text}}
       </mat-radio-button>
     </mat-radio-group>
     <div class="button-row">
@@ -15,4 +15,4 @@
   </mat-card-content>
 </mat-card>
 
-<div>Your favorite food is: {{selectedOption.text}}</div>
+<div>Selected Option: {{selectedOption.text}}</div>

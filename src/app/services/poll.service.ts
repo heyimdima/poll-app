@@ -4,7 +4,7 @@ import {AngularFirestore} from "@angular/fire/compat/firestore";
 import {Poll} from "../models/poll";
 import {PollOption} from "../models/poll-option";
 import {Vote} from "../models/vote";
-import { map, tap } from 'rxjs';
+import { map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'

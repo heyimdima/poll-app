@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import { map, Observable } from 'rxjs';
 import {PollOption} from "src/app/models/poll-option"
 import {PollService} from "src/app/services/poll.service";
-import {Poll} from "../../models/poll";
 
 @Component({
   selector: 'app-poll-form',
@@ -24,5 +23,7 @@ export class PollFormComponent implements OnInit{
     }));
     this.pollQuestion$ = this.pollService.getPolls().pipe(map(poll => poll?.question));
   }
+
+
 
 }
