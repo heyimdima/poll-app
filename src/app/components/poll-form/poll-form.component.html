@@ -1,18 +1,15 @@
-<mat-card class="poll-form-card">
-  <mat-card-header class="poll-form-title">{{pollQuestion$ | async}}</mat-card-header>
-  <mat-divider class="divider"></mat-divider>
-  <mat-card-content>
-    <mat-radio-group class="poll-form-radio-group" [(ngModel)]="selectedOption">
-      <mat-radio-button class="poll-form-radio-button" *ngFor="let option of pollOptions$ | async" [value]="option">
-        {{option.text}}
-      </mat-radio-button>
-    </mat-radio-group>
-    <div class="button-row">
-      <button mat-raised-button [disabled]="selectedOption.text == 'not selected'" class="poll-form-button-answer">Answer</button>
-      <button mat-raised-button class="poll-form-button-see-results">See results</button>
-    </div>
-
-  </mat-card-content>
-</mat-card>
-
-<div>Selected Option: {{selectedOption.text}}</div>
+<mat-card-content>
+  <form (ngSubmit)="onSubmit()">
+  <mat-radio-group class="poll-form-radio-group" [formControl]="selectedOption">
+          <mat-radio-button class="poll-form-radio-button" *ngFor="let option of poll.options" [value]="option">
+            {{option.text}}
+          </mat-radio-button>
+  </mat-radio-group>
+  <div class="button-row">
+    <button mat-raised-button [disabled]="selectedOption.value == undefined" class="poll-form-button-answer" type="submit">
+      Answer
+    </button>
+    <button mat-raised-button class="poll-form-button-see-results">See results</button>
+  </div>
+  </form>
+</mat-card-content>

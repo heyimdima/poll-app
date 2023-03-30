@@ -1,0 +1,14 @@
+.poll-card {
+  width: 400px;
+  padding: 1.5rem;
+  margin: auto;
+}
+
+.poll-title {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.divider {
+  margin-top: 0.25rem;
+}

@@ -23,9 +23,7 @@ export class PollService {
   }
 
   getPolls() {
-    return this.firestore.collection<Poll>('polls').valueChanges().pipe(map((polls: Poll[]) => {
-      return polls?.[0];
-    }));
+    return this.firestore.collection<Poll>('polls').valueChanges();
   }
 
   getPoll(id: string) {

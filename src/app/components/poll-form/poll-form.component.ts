@@ -1,29 +1,29 @@
-import {Component, OnInit} from '@angular/core';
-import { map, Observable } from 'rxjs';
+import {Component, Input, OnInit} from '@angular/core';
 import {PollOption} from "src/app/models/poll-option"
-import {PollService} from "src/app/services/poll.service";
+import {Poll} from "../../models/poll";
+import {FormControl} from "@angular/forms";
+import {PollService} from "../../services/poll.service";
 
 @Component({
   selector: 'app-poll-form',
   templateUrl: './poll-form.component.html',
   styleUrls: ['./poll-form.component.css']
 })
-export class PollFormComponent implements OnInit{
-  pollQuestion$: Observable<string> = new Observable<string>();
-  pollOptions$: Observable<PollOption[]> = new Observable<PollOption[]>();
-  selectedOption: PollOption;
+export class PollFormComponent {
+  @Input()
+  poll!: Poll;
+  selectedOption = new FormControl();
 
   constructor(private pollService: PollService) {
-    this.selectedOption = {id: "no id",text: "not selected", voteCount: 0};
   }
 
-  ngOnInit() {
-    this.pollOptions$ = this.pollService.getPolls().pipe(map(poll => {
-      return poll?.options
-    }));
-    this.pollQuestion$ = this.pollService.getPolls().pipe(map(poll => poll?.question));
+  onSubmit() {
+    console.log('Selected option:', this.selectedOption.value);
+    this.pollService.submitVote({
+      user: "testUser2",
+      pollId: this.poll.id,
+      optionId: this.selectedOption.value.id
+    })
   }
-
-
 
 }

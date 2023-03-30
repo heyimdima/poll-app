@@ -11,13 +11,15 @@ import {MatCardModule} from "@angular/material/card";
 import {MatDividerModule} from "@angular/material/divider";
 import {MatRadioModule} from "@angular/material/radio";
 import {MatButtonModule} from "@angular/material/button";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { FIREBASE_OPTIONS } from "@angular/fire/compat";
 import {HttpClientModule} from "@angular/common/http";
+import {PollComponent} from "./components/poll/poll.component";
 
 @NgModule({
   declarations: [
     AppComponent,
+    PollComponent,
     PollFormComponent
   ],
   imports: [
@@ -30,7 +32,8 @@ import {HttpClientModule} from "@angular/common/http";
     MatRadioModule,
     MatButtonModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [{ provide: FIREBASE_OPTIONS, useValue: environment.firebase }],
   bootstrap: [AppComponent]

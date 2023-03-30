@@ -1,1 +1,5 @@
-<p>poll works!</p>
+<mat-card class="poll-card" *ngFor="let poll of polls$ | async">
+  <mat-card-header class="poll-title">{{ poll.question }}</mat-card-header>
+  <mat-divider class="divider"></mat-divider>
+  <app-poll-form [poll]="poll"></app-poll-form>
+</mat-card>
