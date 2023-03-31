@@ -19,7 +19,11 @@ export class PollComponent implements OnInit {
   ngOnInit() {
     this.polls$ = this.pollService.getPolls();
     this.hasVoted$ = this.pollService.getVotes("1").pipe(
-      map(votes => votes.some(vote => vote.user === this.userService.userId))
+      map(votes => {
+        const hasVoted = votes.some(vote => vote.user === this.userService.userId)
+        console.log('Has Voted', hasVoted)
+        return hasVoted
+      })
     );
 
   }

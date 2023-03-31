@@ -3,7 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {AngularFirestore, DocumentReference} from "@angular/fire/compat/firestore";
 import {Poll} from "../models/poll";
 import {Vote} from "../models/vote";
-import {map, Observable} from "rxjs";
+import { map, Observable, tap } from 'rxjs';
 import {UserService} from "./user.service";
 
 @Injectable({
@@ -32,7 +32,9 @@ export class PollService implements OnInit {
   }
 
   getPolls() {
-    return this.firestore.collection<Poll>('polls').valueChanges();
+    return this.firestore.collection<Poll>('polls').valueChanges().pipe(tap(polls => {
+      console.log('Polls: ', polls)
+    }));
   }
 
   hasUserVoted(pollId: string, userId: string): Observable<boolean> {

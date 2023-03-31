@@ -1,7 +1,7 @@
 <mat-card-content>
-  <form (ngSubmit)="onSubmit()">
+  <form>
     <mat-radio-group class="poll-form-radio-group" [formControl]="selectedOption">
-      <mat-radio-button class="poll-form-radio-button" *ngFor="let option of poll.options" [value]="option">
+      <mat-radio-button class="poll-form-radio-button" *ngFor="let option of pollOptions" [value]="option">
         {{option.text}}
       </mat-radio-button>
     </mat-radio-group>
@@ -10,7 +10,7 @@
               type="submit">
         Answer
       </button>
-      <button mat-raised-button class="poll-form-button-see-results">See results</button>
+      <button mat-raised-button class="poll-form-button-see-results" (click)="submit()">See results</button>
     </div>
   </form>
 </mat-card-content>

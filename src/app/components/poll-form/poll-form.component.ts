@@ -1,38 +1,38 @@
-import {Component, Input} from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import {Poll} from "../../models/poll";
 import {FormControl} from "@angular/forms";
 import {PollService} from "../../services/poll.service";
 import {UserService} from "../../services/user.service";
+import { PollOption } from '../../models/poll-option';
 
 @Component({
   selector: 'app-poll-form',
   templateUrl: './poll-form.component.html',
   styleUrls: ['./poll-form.component.css']
 })
-export class PollFormComponent {
+export class PollFormComponent implements OnChanges {
   @Input()
-  poll!: Poll;
+  pollOptions!: PollOption[];
+  @Input()
+  pollId!: string | undefined;
   selectedOption = new FormControl();
 
   constructor(private pollService: PollService, private userService: UserService) {
   }
 
-  onSubmit() {
-    // console.log('Selected option:', this.selectedOption.value);
-    //
-    // this.userService.getUniqueId().subscribe(
-    //   (uniqueId: string) => {
-    //     this.pollService.submitVote({
-    //       user: uniqueId,
-    //       pollId: this.poll.id,
-    //       optionId: this.selectedOption.value.id
-    //     });
-    //     this.pollService.showPoll = false;
-    //   },
-    //   (error) => {
-    //     console.error(error);
-    //   }
-    // );
+  ngOnChanges() {
+    console.log('Options', this.pollOptions)
+  }
+  submit() {
+    console.log('Selected option:', this.selectedOption.value);
+    // TODO fix this
+    // this.pollService.submitVote({
+    //   user: this.userService.userId,
+    //   pollId: this.pollId,
+    //   optionId: this.selectedOption.value.id
+    // });
+    // this.pollService.showPoll = false;
+
   }
 
 }
