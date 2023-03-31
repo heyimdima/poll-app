@@ -1,5 +1,8 @@
 <mat-card class="poll-card" *ngFor="let poll of polls$ | async">
   <mat-card-header class="poll-title">{{ poll.question }}</mat-card-header>
   <mat-divider class="divider"></mat-divider>
-  <app-poll-form [poll]="poll"></app-poll-form>
+  <ng-container *ngIf="(hasVoted$ | async) as hasVoted">
+    <app-poll-form [poll]="poll" *ngIf="!hasVoted"></app-poll-form>
+    <app-poll-results [poll]="poll" *ngIf="hasVoted"></app-poll-results>
+  </ng-container>
 </mat-card>

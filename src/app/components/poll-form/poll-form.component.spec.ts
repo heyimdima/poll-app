@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { PollFormComponent } from './poll-form.component';
+import {PollFormComponent} from './poll-form.component';
 
 describe('PollFormComponent', () => {
   let component: PollFormComponent;
@@ -8,9 +8,9 @@ describe('PollFormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PollFormComponent ]
+      declarations: [PollFormComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(PollFormComponent);
     component = fixture.componentInstance;

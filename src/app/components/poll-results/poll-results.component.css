@@ -1,0 +1,14 @@
+.poll-result-radio-group {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+  align-items: flex-start;
+}
+
+.poll-result-radio-button {
+  margin: 5px;
+}
+
+.poll-result-option-box {
+  width: 100%;
+}

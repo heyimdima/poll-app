@@ -1,15 +1,16 @@
 <mat-card-content>
   <form (ngSubmit)="onSubmit()">
-  <mat-radio-group class="poll-form-radio-group" [formControl]="selectedOption">
-          <mat-radio-button class="poll-form-radio-button" *ngFor="let option of poll.options" [value]="option">
-            {{option.text}}
-          </mat-radio-button>
-  </mat-radio-group>
-  <div class="button-row">
-    <button mat-raised-button [disabled]="selectedOption.value == undefined" class="poll-form-button-answer" type="submit">
-      Answer
-    </button>
-    <button mat-raised-button class="poll-form-button-see-results">See results</button>
-  </div>
+    <mat-radio-group class="poll-form-radio-group" [formControl]="selectedOption">
+      <mat-radio-button class="poll-form-radio-button" *ngFor="let option of poll.options" [value]="option">
+        {{option.text}}
+      </mat-radio-button>
+    </mat-radio-group>
+    <div class="button-row">
+      <button mat-raised-button [disabled]="selectedOption.value == undefined" class="poll-form-button-answer"
+              type="submit">
+        Answer
+      </button>
+      <button mat-raised-button class="poll-form-button-see-results">See results</button>
+    </div>
   </form>
 </mat-card-content>
