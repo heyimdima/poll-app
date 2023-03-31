@@ -1,5 +1,4 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
-import {Poll} from "../../models/poll";
+import { Component, Input, OnChanges } from '@angular/core';
 import {FormControl} from "@angular/forms";
 import {PollService} from "../../services/poll.service";
 import {UserService} from "../../services/user.service";
@@ -25,14 +24,11 @@ export class PollFormComponent implements OnChanges {
   }
   submit() {
     console.log('Selected option:', this.selectedOption.value);
-    // TODO fix this
-    // this.pollService.submitVote({
-    //   user: this.userService.userId,
-    //   pollId: this.pollId,
-    //   optionId: this.selectedOption.value.id
-    // });
-    // this.pollService.showPoll = false;
-
+    this.pollService.submitVote({
+      user: this.userService.userId,
+      pollId: this.pollId,
+      optionId: this.selectedOption.value.id
+    }).then();
   }
 
 }

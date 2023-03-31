@@ -1,30 +1,19 @@
 import {Injectable, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {AngularFirestore, DocumentReference} from "@angular/fire/compat/firestore";
+import {AngularFirestore} from "@angular/fire/compat/firestore";
 import {Poll} from "../models/poll";
 import {Vote} from "../models/vote";
-import { map, Observable, tap } from 'rxjs';
-import {UserService} from "./user.service";
+import {tap} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class PollService implements OnInit {
-  private _showPoll: boolean = true;
-
-  constructor(private http: HttpClient, private firestore: AngularFirestore, private userService: UserService) {
+  constructor(private http: HttpClient, private firestore: AngularFirestore) {
   }
 
   ngOnInit() {
 
-  }
-
-  get showPoll(): boolean {
-    return this._showPoll;
-  }
-
-  set showPoll(value: boolean) {
-    this._showPoll = value;
   }
 
   createPoll(poll: Poll) {
@@ -37,20 +26,13 @@ export class PollService implements OnInit {
     }));
   }
 
-  hasUserVoted(pollId: string, userId: string): Observable<boolean> {
-    return this.getVotes(pollId).pipe(
-      map((votes: Vote[]) => {
-        console.log(votes.some(vote => vote.user === userId));
-        return votes.some(vote => vote.user === userId);
-      })
-    );
-  }
-
   getPoll(id: string) {
     return this.firestore.collection('polls').doc<Poll>(id).valueChanges();
   }
 
-
+  submitVote(vote: Vote) {
+    return this.firestore.collection('votes').add(vote);
+  }
 
 
   getVotes(pollId: string) {

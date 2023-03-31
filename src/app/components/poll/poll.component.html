@@ -3,5 +3,4 @@
   <mat-divider class="divider"></mat-divider>
     <app-poll-form [pollOptions]="poll.options" [pollId]="poll.id" *ngIf="!(hasVoted$ | async)"></app-poll-form>
     <app-poll-results [poll]="poll" *ngIf="hasVoted$ | async"></app-poll-results>
-
 </mat-card>
