@@ -1,8 +1,8 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import {Component, Input, OnChanges} from '@angular/core';
 import {FormControl} from "@angular/forms";
 import {PollService} from "../../services/poll.service";
 import {UserService} from "../../services/user.service";
-import { PollOption } from '../../models/poll-option';
+import {PollOption} from '../../models/poll-option';
 
 @Component({
   selector: 'app-poll-form',
@@ -22,6 +22,7 @@ export class PollFormComponent implements OnChanges {
   ngOnChanges() {
     console.log('Options', this.pollOptions)
   }
+
   submit() {
     console.log('Selected option:', this.selectedOption.value);
     this.pollService.submitVote({
