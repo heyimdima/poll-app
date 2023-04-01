@@ -40,5 +40,4 @@ export class PollService implements OnInit {
       .collection<Vote>('votes', (ref) => ref.where('pollId', '==', pollId))
       .valueChanges();
   }
-
 }
